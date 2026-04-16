@@ -1,36 +1,173 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧩 Prueba Técnica Frontend - Gestión de Posts
 
-## Getting Started
+Aplicación desarrollada con **Next.js (App Router)** que permite listar, crear, editar y eliminar posts consumiendo una API externa, con manejo de estado híbrido (**React Query + Zustand**), optimización de imágenes y testing.
 
-First, run the development server:
+---
+
+## 🚀 Demo
+
+> Puedes agregar aquí el link si despliegas el proyecto (Vercel recomendado)
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+* **Next.js 14+ (App Router)**
+* **React**
+* **TypeScript**
+* **React Query (@tanstack/react-query)** → manejo de data remota
+* **Zustand** → estado local (optimistic UI + persistencia)
+* **React Hook Form + Zod** → manejo y validación de formularios
+* **Tailwind CSS** → estilos
+* **Jest + React Testing Library** → testing
+
+---
+
+## 📦 Instalación y ejecución
+
+### 1. Clonar repositorio
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repo-url>
+cd <nombre-del-proyecto>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2. Instalar dependencias
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+yarn
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Configurar variables de entorno
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Crear archivo `.env.local` en la raíz:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```env
+NEXT_PUBLIC_API_URL=https://jsonplaceholder.typicode.com
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 4. Ejecutar en desarrollo
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+yarn dev
+```
+
+La aplicación estará disponible en:
+
+```
+http://localhost:3000
+```
+
+---
+
+## 🧪 Ejecutar tests
+
+```bash
+yarn test
+```
+
+Modo watch:
+
+```bash
+yarn test -- --watch
+```
+
+---
+
+## 🏗️ Arquitectura del proyecto
+
+```txt
+src/
+ ├── app/                → rutas (Next.js App Router)
+ ├── components/         → componentes reutilizables
+ ├── hooks/              → lógica reutilizable (React Query)
+ ├── store/              → estado global con Zustand
+ ├── services/           → llamadas a API (fetch)
+ ├── config/             → variables de entorno
+ ├── schemas/            → validaciones con Zod
+ ├── types/              → tipado global
+```
+
+---
+
+## 🧠 Decisiones técnicas
+
+### 🔹 React Query + Zustand (sync híbrido)
+
+* React Query maneja el estado remoto (API)
+* Zustand maneja:
+
+  * posts creados localmente
+  * eliminación optimista
+  * persistencia en localStorage
+
+👉 Esto permite simular un backend real sin depender completamente de la API.
+
+---
+
+### 🔹 SSR + ISR
+
+* Se implementa **Server-Side Rendering (SSR)** en el detalle del post
+* Se utiliza **ISR (revalidate: 60)** para mejorar performance
+
+---
+
+### 🔹 Manejo de imágenes
+
+* Uso de `next/image` para optimización automática
+* Lazy loading
+* Placeholder / skeleton
+* Manejo de error (fallback visual)
+
+---
+
+### 🔹 Formularios
+
+* React Hook Form para performance
+* Zod para validación declarativa
+
+---
+
+### 🔹 Testing
+
+Se implementaron pruebas para:
+
+* ✅ Estado global (Zustand)
+* ✅ Formularios (validación + submit)
+* ✅ Hooks (React Query)
+
+---
+
+## ✨ Funcionalidades
+
+* 📄 Listado de posts con infinite scroll
+* 🔍 Búsqueda con debounce
+* ➕ Crear post
+* ✏️ Editar post
+* ❌ Eliminar post (optimistic UI)
+* 🖼️ Visualización de imágenes
+* ⚡ SSR + ISR en detalle
+* 💾 Persistencia local (Zustand)
+
+---
+
+## 🔐 Consideraciones de seguridad
+
+* Uso de variables de entorno (`.env`)
+* Sanitización de inputs mediante validación con Zod
+* Separación de lógica de acceso a datos
+
+---
+
+## 👨‍💻 Autor
+
+Desarrollado por **Alexander Rincón Suarez**
+
+---
+# reactTestDC
