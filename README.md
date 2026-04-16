@@ -4,12 +4,6 @@ Aplicación desarrollada con **Next.js (App Router)** que permite listar, crear,
 
 ---
 
-## 🚀 Demo
-
-> Puedes agregar aquí el link si despliegas el proyecto (Vercel recomendado)
-
----
-
 ## 🛠️ Tecnologías utilizadas
 
 * **Next.js 14+ (App Router)**
@@ -28,8 +22,8 @@ Aplicación desarrollada con **Next.js (App Router)** que permite listar, crear,
 ### 1. Clonar repositorio
 
 ```bash
-git clone <repo-url>
-cd <nombre-del-proyecto>
+git clone https://github.com/9alex12/reactTestDC.git
+cd frontend-test
 ```
 
 ---
